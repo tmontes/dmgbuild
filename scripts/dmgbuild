@@ -19,7 +19,7 @@ parser.add_argument('-D', dest='defines', action='append', default=[],
                     help='Define a value for the settings file (e.g. -Dfoo=bar).')
 parser.add_argument('--no-hidpi', dest='lookForHiDPI', action='store_false', default=True,
                     help='Do not search for HiDPI versions of the background image (if specified)')
-parser.add_argument('--detach-retries', type=int, default=5,
+parser.add_argument('--detach-retries', type=int, default=60,
                     help='Number of `hdiutil detach` call attempts')
 
 

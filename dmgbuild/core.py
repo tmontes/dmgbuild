@@ -603,6 +603,7 @@ def build_dmg(filename, volume_name, settings_file=None, settings={},
         hdiutil('detach', '-force', device, plist=False)
         raise
 
+    print(f'detach_retries={detach_retries!r}')
     for tries in range(detach_retries):
         ret, output = hdiutil('detach', device, plist=False)
         if not ret:
