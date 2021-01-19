@@ -19,6 +19,8 @@ parser.add_argument('-D', dest='defines', action='append', default=[],
                     help='Define a value for the settings file (e.g. -Dfoo=bar).')
 parser.add_argument('--no-hidpi', dest='lookForHiDPI', action='store_false', default=True,
                     help='Do not search for HiDPI versions of the background image (if specified)')
+parser.add_argument('--detach-retries', type=int, default=5,
+                    help='Number of `hdiutil detach` call attempts')
 
 
 args = parser.parse_args()
@@ -33,4 +35,5 @@ for d in args.defines:
         v = v[1:-1]
     defines[k] = v
 
-dmgbuild.build_dmg(args.filename, args.volume_name, args.settings, defines=defines, lookForHiDPI=args.lookForHiDPI)
+dmgbuild.build_dmg(args.filename, args.volume_name, args.settings, defines=defines,
+                   lookForHiDPI=args.lookForHiDPI, detach_retries=args.detach_retries)
